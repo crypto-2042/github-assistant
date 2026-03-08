@@ -1,6 +1,6 @@
 {
   "name": "get-current-page-readme",
-  "description": "Return README markdown text from the current GitHub repository page",
+  "description": "Read README text directly from current GitHub repository page DOM",
   "itemType": "tool",
   "pathPattern": "^/[^/]+/[^/]+/?$",
   "manifest": {
@@ -12,16 +12,11 @@
     "outputSchema": {
       "type": "object",
       "properties": {
-        "readme": { "type": "string", "description": "README markdown text from current page" },
-        "path": { "type": "string", "description": "Current GitHub repository path" }
+        "readme": { "type": "string", "description": "README text from current page" },
+        "path": { "type": "string", "description": "Current repository path" }
       },
       "required": ["readme", "path"]
     },
-    "page": "() => { const el = document.querySelector('#readme article.markdown-body, article.markdown-body, #readme [data-testid=\\\"markdown-body\\\"]'); const readme = (el?.innerText || '').trim(); return { readme, path: location.pathname }; }",
-    "execute": "async ({ page }) => { const readme = (page?.readme || '').trim(); if (!readme) { throw new Error('README not found on current GitHub page'); } return { readme, path: page?.path || location.pathname }; }",
-    "source": {
-      "type": "resource",
-      "name": "current-page-readme"
-    }
+    "script": "async () => { const container = document.querySelector('#readme article.markdown-body, #readme .markdown-body, article.markdown-body'); const readme = (container?.innerText || '').trim(); if (!readme) throw new Error('README content not found from page DOM'); return { readme, path: location.pathname }; }"
   }
 }
