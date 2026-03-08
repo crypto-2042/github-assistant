@@ -1,0 +1,23 @@
+{
+  "name": "read-repo-readme",
+  "description": "Read README content from a target GitHub repository",
+  "itemType": "tool",
+  "pathPattern": "^/[^/]+/[^/]+$",
+  "manifest": {
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "github_owner": { "type": "string", "description": "GitHub owner" },
+        "github_repo": { "type": "string", "description": "GitHub repository name" }
+      },
+      "required": ["github_owner", "github_repo"]
+    },
+    "outputSchema": {
+      "type": "object",
+      "properties": {
+        "readme": { "type": "string" }
+      },
+      "required": ["readme"]
+    }
+  }
+}

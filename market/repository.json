@@ -1,0 +1,6 @@
+{
+  "name": "github-assistant",
+  "description": "GitHub assistant for reading repository README and repository-level analysis",
+  "siteDomain": "github.com",
+  "version": "1.0.0"
+}
