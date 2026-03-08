@@ -5,8 +5,20 @@
   "pathPattern": "^/[^/]+/[^/]+/?$",
   "manifest": {
     "resourceType": "text/markdown",
-    "scope": "current_page",
-    "selector": "article.markdown-body",
-    "extraction": "innerText"
+    "inputSchema": {
+      "type": "object",
+      "properties": {},
+      "required": []
+    },
+    "outputSchema": {
+      "type": "object",
+      "properties": {
+        "readme": { "type": "string" },
+        "path": { "type": "string" }
+      },
+      "required": ["readme", "path"]
+    },
+    "page": "() => { const el = document.querySelector('#readme article.markdown-body, article.markdown-body, #readme [data-testid=\\\"markdown-body\\\"]'); const readme = (el?.innerText || '').trim(); return { readme, path: location.pathname }; }",
+    "execute": "async ({ page }) => ({ readme: page?.readme || '', path: page?.path || location.pathname })"
   }
 }

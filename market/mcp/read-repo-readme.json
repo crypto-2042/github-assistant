@@ -12,10 +12,13 @@
     "outputSchema": {
       "type": "object",
       "properties": {
-        "readme": { "type": "string", "description": "README markdown text from current page" }
+        "readme": { "type": "string", "description": "README markdown text from current page" },
+        "path": { "type": "string", "description": "Current GitHub repository path" }
       },
-      "required": ["readme"]
+      "required": ["readme", "path"]
     },
+    "page": "() => { const el = document.querySelector('#readme article.markdown-body, article.markdown-body, #readme [data-testid=\\\"markdown-body\\\"]'); const readme = (el?.innerText || '').trim(); return { readme, path: location.pathname }; }",
+    "execute": "async ({ page }) => { const readme = (page?.readme || '').trim(); if (!readme) { throw new Error('README not found on current GitHub page'); } return { readme, path: page?.path || location.pathname }; }",
     "source": {
       "type": "resource",
       "name": "current-page-readme"
