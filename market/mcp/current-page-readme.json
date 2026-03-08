@@ -1,0 +1,12 @@
+{
+  "name": "current-page-readme",
+  "description": "README markdown text resource from the current GitHub repository page",
+  "itemType": "resource",
+  "pathPattern": "^/[^/]+/[^/]+/?$",
+  "manifest": {
+    "resourceType": "text/markdown",
+    "scope": "current_page",
+    "selector": "article.markdown-body",
+    "extraction": "innerText"
+  }
+}

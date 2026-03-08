@@ -1,23 +1,24 @@
 {
-  "name": "read-repo-readme",
-  "description": "Read README content from a target GitHub repository",
+  "name": "get-current-page-readme",
+  "description": "Return README markdown text from the current GitHub repository page",
   "itemType": "tool",
-  "pathPattern": "^/[^/]+/[^/]+$",
+  "pathPattern": "^/[^/]+/[^/]+/?$",
   "manifest": {
     "inputSchema": {
       "type": "object",
-      "properties": {
-        "github_owner": { "type": "string", "description": "GitHub owner" },
-        "github_repo": { "type": "string", "description": "GitHub repository name" }
-      },
-      "required": ["github_owner", "github_repo"]
+      "properties": {},
+      "required": []
     },
     "outputSchema": {
       "type": "object",
       "properties": {
-        "readme": { "type": "string" }
+        "readme": { "type": "string", "description": "README markdown text from current page" }
       },
       "required": ["readme"]
+    },
+    "source": {
+      "type": "resource",
+      "name": "current-page-readme"
     }
   }
 }
