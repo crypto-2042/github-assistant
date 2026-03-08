@@ -17,6 +17,6 @@
       },
       "required": ["readme", "path"]
     },
-    "script": "async () => { const container = document.querySelector('#readme article.markdown-body, #readme .markdown-body, article.markdown-body'); const readme = (container?.innerText || '').trim(); if (!readme) throw new Error('README content not found from page DOM'); return { readme, path: location.pathname }; }"
+    "script": "async () => { const container = document.querySelector('#readme article.markdown-body, #readme .markdown-body, article.markdown-body'); const readme = (container?.textContent || '').trim(); if (!readme) throw new Error('README content not found from page DOM'); return { readme, path: location.pathname }; }"
   }
 }
