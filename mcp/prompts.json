@@ -1,0 +1,37 @@
+[
+  {
+    "name": "explain-readme",
+    "description": "Interpret and explain the README of the current GitHub repository in detail.",
+    "arguments": [
+      {
+        "name": "language",
+        "description": "The language to use for the explanation, e.g. 'en', 'zh-CN', 'ja'.",
+        "required": false
+      }
+    ],
+    "messages": [
+      {
+        "role": "user",
+        "content": {
+          "type": "text",
+          "text": "Please read the README of this GitHub repository and provide a detailed explanation. Cover: what this project does, how to install and use it, its main features, and any important notes. {{#language}}Respond in {{language}}.{{/language}}"
+        }
+      }
+    ],
+    "path": "^/[^/]+/[^/]+/?$"
+  },
+  {
+    "name": "summarize-repo",
+    "description": "Give a quick summary of what this GitHub repository is about based on its README.",
+    "messages": [
+      {
+        "role": "user",
+        "content": {
+          "type": "text",
+          "text": "Based on the README of this repository, give me a concise summary in 2-3 sentences: what does this project do, who is it for, and what problem does it solve?"
+        }
+      }
+    ],
+    "path": "^/[^/]+/[^/]+/?$"
+  }
+]
