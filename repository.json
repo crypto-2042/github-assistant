@@ -2,5 +2,5 @@
   "name": "github-repo-mcp",
   "description": "Page MCP for GitHub repository detail pages. Provides resources, prompts, and tools to interact with repo content.",
   "siteDomain": "github.com",
-  "version": "2.0.0"
+  "version": "2.1.0"
 }

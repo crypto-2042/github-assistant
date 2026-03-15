@@ -126,7 +126,7 @@ Extracts the rendered README content from `article.markdown-body`.
 ```json
 {
   "name": "get-readme",
-  "execute": "(() => { const article = document.querySelector('article.markdown-body'); ... })()"
+  "execute": "() => { const article = document.querySelector('article.markdown-body'); ... }"
 }
 ```
 
@@ -145,7 +145,7 @@ Searches within the current repository on GitHub. Accepts `query` (required) and
     },
     "required": ["query"]
   },
-  "execute": "(async () => { ... window.location.href = searchUrl; })()"
+  "execute": "async () => { ... window.location.href = searchUrl; }"
 }
 ```
 

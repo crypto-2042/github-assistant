@@ -2,14 +2,14 @@
   {
     "name": "username",
     "description": "The repository owner's username, extracted from the repo header breadcrumb.",
-    "uri": "page://selector/a.url.fn",
+    "uri": "page://selector/nav span",
     "mimeType": "text/plain",
     "path": "^/[^/]+/[^/]+/?$"
   },
   {
     "name": "project_name",
     "description": "The repository project name, extracted from the repo header via XPath.",
-    "uri": "page://xpath//strong[@itemprop='name']/a",
+    "uri": "page://xpath///strong[@itemprop='name']/a",
     "mimeType": "text/plain",
     "path": "^/[^/]+/[^/]+/?$"
   }

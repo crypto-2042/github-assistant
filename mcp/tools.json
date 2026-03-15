@@ -2,27 +2,7 @@
   {
     "name": "get-readme",
     "description": "Extract the rendered README content from the current GitHub repository page.",
-    "execute": "(() => { const article = document.querySelector('article.markdown-body'); if (!article) return { error: 'README not found on this page.' }; return { content: article.innerText, html: article.innerHTML }; })()",
-    "path": "^/[^/]+/[^/]+/?$"
-  },
-  {
-    "name": "search-repo",
-    "description": "Search for code, issues, or discussions within the current GitHub repository.",
-    "inputSchema": {
-      "type": "object",
-      "properties": {
-        "query": {
-          "type": "string",
-          "description": "The search keyword or phrase."
-        },
-        "type": {
-          "type": "string",
-          "description": "The type of search: 'code', 'issues', 'discussions'. Defaults to 'code'."
-        }
-      },
-      "required": ["query"]
-    },
-    "execute": "(async () => { const owner = document.querySelector('a.url.fn')?.textContent?.trim(); const repo = document.querySelector('strong[itemprop=\"name\"] a')?.textContent?.trim(); if (!owner || !repo) return { error: 'Could not determine repo owner or name.' }; const type = input.type || 'code'; const q = encodeURIComponent(input.query + ' repo:' + owner + '/' + repo); const url = 'https://github.com/search?q=' + q + '&type=' + type; window.location.href = url; return { navigatedTo: url }; })()",
+    "execute": "async () => { const tmp = location.pathname.split('/'); const author = tmp[1]; const project = tmp[2]; const content = await fetch(`https://api.github.com/repos/${author}/${project}/readme`, { headers: { 'Accept': 'application/vnd.github.v3.raw' } }).then(response => response.text()); return { content }; }",
     "path": "^/[^/]+/[^/]+/?$"
   }
 ]
